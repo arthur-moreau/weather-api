@@ -7,5 +7,4 @@ export const BigText = styled.h1`
   word-spacing: 0px;
   height: 52px;
   margin: 0;
-  text-transform: ${props => props.uppercase ? "uppercase" : "none"}
 `

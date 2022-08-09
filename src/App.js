@@ -1,14 +1,21 @@
 import React from "react";
 import Layout from "./components/layout/layout";
-import * as S from "./components/layout/styled"
+import Search from "./components/search/search";
+import ShowWeather from "./components/show-weather/show-weather";
 
+import useWeather from "./hooks/weather-hooks";
 
 const App = () => {
+
+  const { weatherState } = useWeather();
+
   return (
     <>
-      <S.FontStyles />  
-      <S.GlobalStyle />
-      <Layout />
+        <Layout>
+        {/* <Search></Search>
+        <ShowWeather></ShowWeather> */}
+          {weatherState.loading ? (<ShowWeather />) : (<Search />)}
+        </Layout>
     </>
   );
 }

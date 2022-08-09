@@ -1,9 +1,9 @@
 import React from 'react';
 import { BigText } from './styled';
 
-const MainText = ({ uppercase, children }) => {
+const MainText = ({ children }) => {
   return (
-    <BigText props = {uppercase}>
+    <BigText>
       {children}
     </BigText>
   );

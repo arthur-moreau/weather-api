@@ -9,4 +9,6 @@ const SecundaryText = ({ children }) => {
   );
 };
 
+
+
 export default SecundaryText;

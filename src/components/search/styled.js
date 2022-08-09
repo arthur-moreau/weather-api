@@ -27,3 +27,7 @@ export const SearchBox = styled.input`
     font-size: 20px;
   }
 `
+
+export const SearchBtn = styled.button`
+  
+`

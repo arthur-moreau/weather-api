@@ -2,33 +2,34 @@ import React from "react";
 import MainText from "../main-text/main-text";
 import SecundaryText from "../secundary-text/secundary-text";
 import * as S from "./styled";
+import useWeather from '../../hooks/weather-hooks'
+
+
 
 const ShowWeather = () => {
+  
+  const { weatherState } = useWeather()
+  
   return (
+
     <S.Container height="250px">
-      <MainText>belo horizonte</MainText>
-      <SecundaryText>Nuvens Dispersas</SecundaryText>
-      <S.Temp>
-        <div>
-          29<sup>o</sup>
-        </div>
+      <MainText>{weatherState.city}</MainText>
+      <SecundaryText>{weatherState.description}</SecundaryText>
+      <S.Container row width="190px">
+        <S.Temp>
+          {weatherState.temp}º
+        </S.Temp>
         <img
-          src="http://cdn.worldweatheronline.com/images/wsymbols01_png_64/wsymbol_0008_clear_sky_night.png"
+          src={weatherState.icon}
           alt="icone do tempo"
         />
-      </S.Temp>
-      <S.Container row>
+      </S.Container>
+      <S.Container row >
         <h4>
-          Max:{" "}
-          <span>
-            29<sup>o</sup>
-          </span>
+          Max:<span>{weatherState.max}º</span>
         </h4>
         <h4>
-          Min:{" "}
-          <span>
-            14<sup>o</sup>
-          </span>
+          Min:<span>{weatherState.min}º</span>
         </h4>
       </S.Container>
       <a href="#se">Ver previsão para os próximos 5 dias</a>
