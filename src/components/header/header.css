@@ -1,0 +1,152 @@
+/* Header */
+
+header {
+  height: 50px;
+  padding: 50px 50px 0;
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Go Back Button */
+
+.go-back {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Temperature Button */
+
+.temp-type-container {
+  display: flex;
+  justify-content: center;
+  width: 90px;
+  height: 50px;
+}
+
+/* Rectangle */
+
+.switch {
+  width: 50px;
+  height: 30px;
+  position: relative;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch::before {
+  content: "ºF";
+  font-size: 15px;
+  position: absolute;
+  top: 5px;
+  left: -20px
+}
+
+.switch::after {
+  content: "ºC";
+  font-size: 15px;
+  position: absolute;
+  top: 5px;
+  right: -20px;
+}
+
+/* Ellipse */
+
+.slider {
+  background-color: rgba(28, 36, 40, 0.49);
+  border-radius: 50px;
+  cursor: pointer;
+  position: absolute;
+  
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: rgb(217, 217, 217);
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  border-radius: 50px;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(210, 179, 193);
+}
+
+input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+@media (max-width:375px) {
+  /* Header */
+
+  header {
+    height: 20px;
+    padding: 20px 20px 0;
+  }
+
+  /* Go Back Button */
+
+  .go-back {
+    width: 24px;
+    height: 24px;
+  }
+
+  .go-back img {
+    width: 24px;
+    height: 18.57px;
+  }
+
+  /* Temperature Button */
+
+  .temp-type-container {
+    width: 80px;
+    height: 20px;
+  }
+
+ /* Rectangle */
+
+  .switch {
+    width: 40px;
+    height: 20px;
+  }
+
+  .switch::before {
+    font-size: 12px;
+    top: 3px;
+  }
+
+  .switch::after {
+    font-size: 12px;
+    top: 3px;
+  }
+
+  /* Ellipse */
+
+  .slider::before {
+    width: 14px;
+    height: 14px;
+    left: 5px;
+    bottom: 3px;
+  }
+
+  input:checked + .slider::before {
+    transform: translateX(16px);
+  }
+}

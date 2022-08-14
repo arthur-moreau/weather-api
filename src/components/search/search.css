@@ -1,0 +1,187 @@
+
+
+.container {
+  height: 122px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.big-text {
+  font-family: "montserrat", 'sans-serif';
+  font-size: 43px;
+  letter-spacing: 6px;
+  word-spacing: 0px;
+  height: 52px;
+  margin: 0;
+}
+
+/* Initial searchbox*/
+
+.search-box {
+  height: 50px;
+  width: 710px;
+  margin: 15px 0 0;
+  padding:0;
+  border: 0;
+  border-radius: 10px;
+  background-color: #ffffff77;
+  color: #6AA2D1;
+  font-size: 20px;
+  text-indent: 15px;
+}
+
+.search-box:focus {
+  outline:0;
+}
+
+.search-box::placeholder {
+  color: #6AA2D1;
+  font-size: 20px;
+}
+
+/* Search box prepared for suggestions*/
+
+.search-box-searching {
+  height: 50px;
+  width: 710px;
+  margin-top: 18px;
+  padding:0;
+  border: 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: #ffffff77;
+  color: #6AA2D1;
+  font-size: 20px;
+  text-indent: 15px;
+}
+
+.search-box-searching:focus {
+  outline:0;
+}
+
+.search-box-searching::placeholder {
+  color: #6AA2D1;
+  font-size: 20px;
+}
+
+/* Div of suggestions*/
+
+.suggestions {
+  width: 710px;
+  padding: 0;
+  border: 0;
+  margin-top:1px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #ffffff77;
+  color: #6AA2D1;
+  font-size: 20px;
+}
+
+/* Div of each suggestion*/
+
+.suggestion {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 710px;
+  padding: 0;
+  border: 0;
+  color: #6AA2D1;
+  font-size: 20px;
+  text-indent: 15px;
+}
+
+.suggestion:hover {
+  cursor:pointer;
+  color:#D2B3C1;
+}
+
+/* Responsiveness*/
+
+@media (max-width: 768px) {
+  
+  .container {
+    width: 500px;
+    height: 143px;
+  }
+
+  .big-text {
+    height: 110px;
+    text-align: center;
+    font-size: 46px;
+    letter-spacing: 1px;
+  }
+
+  .search-box {
+    height: 50px;
+    width: 500px;
+    font-size: 18px;
+  }
+
+  .search-box::placeholder {
+    font-size: 18px;
+  }
+
+  .search-box-searching {
+    height: 50px;
+    width: 500px;
+    font-size: 18px;
+  }
+
+  .suggestions {
+    width: 500px;
+    font-size: 18px;
+  }
+
+  .suggestion {
+    width: 500px;
+    font-size: 18px;
+  }
+
+}
+
+@media (max-width: 375px) {
+  
+  .container {
+    width: 334px;
+    height: 143px;
+  }
+
+  .big-text {
+    height: 74px;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 1px;
+  }
+
+  .search-box {
+    height: 50px;
+    width: 334px;
+    font-size: 16px;
+  }
+
+  .search-box::placeholder {
+    font-size: 16px;
+  }
+
+  .search-box-searching {
+    height: 50px;
+    width: 334px;
+    font-size: 16px;
+  }
+
+  .suggestions {
+    width: 334px;
+    font-size: 16px;
+  }
+
+  .suggestion {
+    width: 334px;
+    font-size: 16px;
+  }
+}

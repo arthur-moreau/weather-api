@@ -1,9 +1,11 @@
-import React, { createContext, useState } from 'react';
-import { useCallback } from 'react';
+import React, { createContext, useState, useCallback} from 'react';
 import api from '../services/api';
+import { Globals } from '../components/header/header';
+
+// Context creation
 
 export const WeatherContext = createContext({
-  loading: false,
+  searching: false,
   city: '',
   description: '',
   temp: '',
@@ -12,9 +14,12 @@ export const WeatherContext = createContext({
   icon: '',
 })
 
+
+// Provider
+
 const WeatherProvider = ({ children }) => {
   const [weatherState, setWeatherState] = useState({
-    loading: false,
+    searching: false,
     city: '',
     description: '',
     temp: '',
@@ -23,11 +28,19 @@ const WeatherProvider = ({ children }) => {
     icon: '',
   });
   
-  const key = '15e4fc3930ee7d0cc5a48e8472313d03'
+  const apiKey = '15e4fc3930ee7d0cc5a48e8472313d03'
+  
+  // Function to get the current weather from API
 
   const getWeather = (city) => {
 
-    api.get(`/weather?q=${city}&lang=pt_br&appid=${key}&units=metric`)
+    // Variable to define the temperature type
+    let units = ''
+    Globals.typeOfTemp === false ? units = 'metric' : units = 'imperial'
+
+    // Requisition to open weather map
+
+    api.get(`/weather?q=${city}&lang=pt_br&appid=${apiKey}&units=${units}`)
     
     .then(({ data: weatherData }) => {
       setWeatherState((prevState) => ({
@@ -40,17 +53,44 @@ const WeatherProvider = ({ children }) => {
         icon: `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
       }))
     })
-    
-    .finally(setWeatherState((prevState) => ({
+
+    .catch((err) => {
+      if (err.request.status === 404) {
+        alert('Local não encontrado')
+        (setWeatherState((prevState) => ({
+          ...prevState,
+          searching: !prevState.searching
+        })))
+      }
+    })
+
+    // function that permits React to render the results or get back if contain error
+    .finally (setWeatherState((prevState) => ({
       ...prevState,
-      loading: !prevState.loading
+      searching: !prevState.searching
     })))
 
   };
 
+  // function to restart the app
+
+  const resetApp = () => {
+    setWeatherState((prevState) => ({
+      ...prevState,
+      searching: false,
+      city: '',
+      description: '',
+      temp: '',
+      max: '',
+      min: '',
+      icon: '',
+    }))
+  }
+  
   const contextValue = {
     weatherState,
-    getWeather: useCallback((city) => getWeather(city), []),
+    getWeather: useCallback((city) => getWeather(city),[]),
+    resetApp,
   };
 
   return (
